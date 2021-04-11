@@ -50,7 +50,7 @@ public class CustomerServlet extends HttpServlet {
 					Customer currentCustomer = uCustomer.returnByEmail(email);
 					formattedResponse.setData(currentCustomer);
 					HttpSession newsess = request.getSession();
-					newsess.setAttribute("admin",false);
+					newsess.setAttribute("admin", false);
 					newsess.setAttribute("current", currentCustomer);
 					out.print(new Gson().toJson(formattedResponse));
 					out.flush();
@@ -62,7 +62,7 @@ public class CustomerServlet extends HttpServlet {
 				FormattedResponse<Integer> cartNformattedResponse = new FormattedResponse<>();
 				String id = request.getParameter("id");
 				try {
-					int cartItemsN = uCustomer.checkCart(parseInt(id,10));
+					int cartItemsN = uCustomer.checkCart(parseInt(id, 10));
 					cartNformattedResponse.setData(cartItemsN);
 					HttpSession newsess = request.getSession();
 
@@ -81,7 +81,7 @@ public class CustomerServlet extends HttpServlet {
 					Customer current = uCustomer.checkLogin(logemail, logpassword);
 					loginFormattedResponse.setData(current);
 					HttpSession newsess = request.getSession();
-					newsess.setAttribute("admin",current.isAdmin());
+					newsess.setAttribute("admin", current.isAdmin());
 					newsess.setAttribute("current", current);
 					out.print(new Gson().toJson(loginFormattedResponse));
 					out.flush();
@@ -101,7 +101,7 @@ public class CustomerServlet extends HttpServlet {
 			case "orders":
 				FormattedResponse<ArrayList<Order>> orderFormattedResponse = new FormattedResponse<>();
 				String customerID = request.getParameter("id");
-				try{
+				try {
 					ArrayList<Order> orders = uCustomer.getOrderList(uCustomer.getOrders(Integer.parseInt(customerID)));
 					orderFormattedResponse.setData(orders);
 

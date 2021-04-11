@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -49,7 +48,7 @@ function addToCart(id) {
     return __awaiter(this, void 0, void 0, function* () {
         const checkRes = yield fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=check&ID=" + localStorage.getItem("userID"));
         const checkJsonObj = yield checkRes.json();
-        if (checkJsonObj.data && checkJsonObj.data.includes(id)) {
+        if (checkJsonObj.data && checkJsonObj.data.indexOf(id)) {
             const ures = yield fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=update&ID=" + localStorage.getItem("userID") + "&item=" + id);
             const uJsonObj = yield ures.json();
             return;
@@ -98,3 +97,4 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+export {};

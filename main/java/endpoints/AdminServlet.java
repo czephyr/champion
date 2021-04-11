@@ -51,7 +51,7 @@ public class AdminServlet extends HttpServlet {
 				FormattedResponse<Boolean> booleanFormattedResponse = new FormattedResponse<>();
 				try {
 					String userID = request.getParameter("userID");
-					if(uCustomer.deleteUser(Integer.parseInt(userID))){
+					if (uCustomer.deleteUser(Integer.parseInt(userID))) {
 						booleanFormattedResponse.setData(true);
 					}
 					booleanFormattedResponse.setError(HttpServletResponse.SC_BAD_REQUEST, "L'utente non esiste");

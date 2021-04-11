@@ -1,4 +1,3 @@
-"use strict";
 let forms = document.getElementById("searchForms");
 function searchClick() {
     if (forms) {

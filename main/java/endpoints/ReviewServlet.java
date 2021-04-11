@@ -22,15 +22,14 @@ public class ReviewServlet extends HttpServlet {
 		ReviewDAO uReview = new ReviewDAO();
 		FormattedResponse<ArrayList<DecoratedReview>> formattedResponse = new FormattedResponse<>();
 
-				String id = request.getParameter("PRODUCTID");
-				try {
-					formattedResponse.setData(uReview.getReviewsByProductID(id));
-					out.print(new Gson().toJson(formattedResponse));
-					out.flush();
-				} catch (SQLException throwables) {
-					throwables.printStackTrace();
-				}
-
+		String id = request.getParameter("PRODUCTID");
+		try {
+			formattedResponse.setData(uReview.getReviewsByProductID(id));
+			out.print(new Gson().toJson(formattedResponse));
+			out.flush();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
 
 
 	}

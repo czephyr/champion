@@ -1,3 +1,7 @@
+import {intResponse, customerResponse} from "../models/responses";
+
+
+
 let loginString: string = `<div class="close-login-button">
 <button class="close-login" onclick="logForm()">
 <i class="fas fa-times"></i>
@@ -35,37 +39,17 @@ let loginString: string = `<div class="close-login-button">
 </form>
 </div>`;
 
-interface Customer {
-	id: number;
-	email: string;
-	password: string;
-	name: string;
-	surname: string;
-	address: string;
-
-	isAdmin: boolean;
-}
-
-interface IntJSONResponse {
-	data: number;
-	status: number;
-}
-
-interface JSONResponse {
-	data: Customer;
-	status: number;
-}
 
 window.addEventListener("DOMContentLoaded", () => {
-	if(document.getElementById("login")){
+	if (document.getElementById("login")) {
 		// @ts-ignore
-		document.getElementById("login").innerHTML =loginString;
+		document.getElementById("login").innerHTML = loginString;
 	}
 });
 
-function logForm(){
-	let login : HTMLElement| null = document.getElementById("login");
-	if(login){
+function logForm() {
+	let login: HTMLElement | null = document.getElementById("login");
+	if (login) {
 		login.classList.toggle("loginOpen");
 	}
 }
@@ -76,25 +60,25 @@ async function SignUp() {
 
 	const rsp: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CustomerServlet", {
 		method: "POST",
-		body: new URLSearchParams([["ACTION","check"],...(new FormData(form) as any)]),
+		body: new URLSearchParams([["ACTION", "check"], ...(new FormData(form) as any)]),
 	});
-	const JsonObj: JSONResponse = await rsp.json();
-	if(JsonObj.data){
+	const JsonObj: customerResponse = await rsp.json();
+	if (JsonObj.data) {
 		const insertRsp: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CustomerServlet", {
 			method: "POST",
-			body: new URLSearchParams([["ACTION","signup"],...(new FormData(form) as any)]),
+			body: new URLSearchParams([["ACTION", "signup"], ...(new FormData(form) as any)]),
 		});
-		const JsonObj: JSONResponse = await insertRsp.json();
+		const JsonObj: customerResponse = await insertRsp.json();
 
 		const cartRsp: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CustomerServlet", {
 			method: "POST",
-			body: new URLSearchParams([["ACTION","cartN"],["id",""+JsonObj.data.id]]),
+			body: new URLSearchParams([["ACTION", "cartN"], ["id", "" + JsonObj.data.id]]),
 		});
-		const jsonCart: IntJSONResponse = await cartRsp.json();
+		const jsonCart: intResponse = await cartRsp.json();
 
-		localStorage.setItem("userID",""+JsonObj.data.id);
-		localStorage.setItem("cartN",""+jsonCart.data);
-		localStorage.setItem("admin",""+JsonObj.data.isAdmin);
+		localStorage.setItem("userID", "" + JsonObj.data.id);
+		localStorage.setItem("cartN", "" + jsonCart.data);
+		localStorage.setItem("admin", "" + JsonObj.data.isAdmin);
 
 
 		document.location.reload(true);
@@ -109,18 +93,18 @@ async function Login() {
 		method: "POST",
 		body: new URLSearchParams([["ACTION", "login"], ...(new FormData(form) as any)]),
 	});
-	const JsonObj: JSONResponse = await rsp.json();
+	const JsonObj: customerResponse = await rsp.json();
 
-	if(JsonObj.data !=null){
+	if (JsonObj.data != null) {
 		const cartRsp: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CustomerServlet", {
 			method: "POST",
-			body: new URLSearchParams([["ACTION","cartN"],["id",""+JsonObj.data.id]]),
+			body: new URLSearchParams([["ACTION", "cartN"], ["id", "" + JsonObj.data.id]]),
 		});
-		const jsonCart: IntJSONResponse = await cartRsp.json();
+		const jsonCart: intResponse = await cartRsp.json();
 
-		localStorage.setItem("userID",""+JsonObj.data.id);
-		localStorage.setItem("cartN",""+jsonCart.data);
-		localStorage.setItem("admin",""+JsonObj.data.isAdmin);
+		localStorage.setItem("userID", "" + JsonObj.data.id);
+		localStorage.setItem("cartN", "" + jsonCart.data);
+		localStorage.setItem("admin", "" + JsonObj.data.isAdmin);
 
 		document.location.reload(true);
 	}

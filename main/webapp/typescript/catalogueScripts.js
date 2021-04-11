@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -19,7 +18,7 @@ function setClickBehaviour(e) {
     if (e.target) {
         // @ts-ignore
         if (e.target.parentElement.id === "add-to-cart-btn") {
-            addToCart2(parseInt(e.target.closest(".card").id)).then(r => {
+            addToCart2(parseInt(e.target.closest(".card").id)).then(() => {
                 let num = localStorage.getItem("cartN");
                 localStorage.removeItem("cartN");
                 localStorage.setItem("cartN", "" + (parseInt(num) + 1));
@@ -99,7 +98,7 @@ function addToCart2(id) {
     return __awaiter(this, void 0, void 0, function* () {
         const checkRes = yield fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=check&ID=" + localStorage.getItem("userID"));
         const checkJsonObj = yield checkRes.json();
-        if (checkJsonObj.data && checkJsonObj.data.includes(id)) {
+        if (checkJsonObj.data && checkJsonObj.data.indexOf(id)) {
             const ures = yield fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=update&ID=" + localStorage.getItem("userID") + "&item=" + id);
             const uJsonObj = yield ures.json();
             return;
@@ -108,3 +107,4 @@ function addToCart2(id) {
         const JsonObj = yield res.json();
     });
 }
+export {};

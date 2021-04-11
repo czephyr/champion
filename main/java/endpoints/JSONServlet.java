@@ -11,29 +11,29 @@ import java.io.PrintWriter;
 
 public class JSONServlet extends HttpServlet {
 
-    private final String CLIENT_HOST = "http://localhost:8080";
-    private final String USER_SESSION = "userData";
-    private Gson gson;
+	private final String CLIENT_HOST = "http://localhost:8080";
+	private final String USER_SESSION = "userData";
+	private Gson gson;
 
-    @Override
-    public void init() throws ServletException {
-        //do I need anything here? Gson configuration maybe? Date to json config?
-    }
+	@Override
+	public void init() throws ServletException {
+		//do I need anything here? Gson configuration maybe? Date to json config?
+	}
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/json");
-        resp.setCharacterEncoding("UTF-8");
-        super.service(req, resp);
-    }
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		super.service(req, resp);
+	}
 
-    protected void requireCredentials(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Credentials", "true");
-    }
+	protected void requireCredentials(HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Credentials", "true");
+	}
 
-    public void checkArguments(boolean condition, String errMessage) throws IllegalArgumentException {
-        if(condition) {
-            throw new IllegalArgumentException(errMessage);
-        }
-    }
+	public void checkArguments(boolean condition, String errMessage) throws IllegalArgumentException {
+		if (condition) {
+			throw new IllegalArgumentException(errMessage);
+		}
+	}
 }

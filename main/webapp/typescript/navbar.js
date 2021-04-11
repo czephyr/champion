@@ -1,4 +1,3 @@
-"use strict";
 let logged = `<li><a href="#" class="nav-link" onclick="logForm()">Log In</a></li>`;
 let cartN = "";
 let admin = "";

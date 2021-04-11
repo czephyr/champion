@@ -1,52 +1,32 @@
+import {Product} from "../models/product";
+
+import {ArrayProductResponse, intArrayResponse} from "../models/responses";
+
+
 let top3row: HTMLElement | null = document.getElementById("top3");
 let top3loader: HTMLElement | null = document.getElementById("top3loader");
 
-interface Product {
-	id: number;
-	price: number;
-	text: string;
-	name: string;
-	category: string;
-	img250: string;
-}
-
-interface JSONResponse {
-	data: Array<Product>;
-	status: number;
-}
-
-interface ProductResponse {
-	data: Array<Product>;
-	status: number;
-}
-
-interface intJSONREsponse{
-	data: Array<number>;
-	status: number;
-	msg: string;
-}
-
-if(top3row){
-	top3row.addEventListener("click",thisFunction)
+if (top3row) {
+	top3row.addEventListener("click", thisFunction)
 }
 
 
-function thisFunction(e: Event){
-	if(e.target){
+function thisFunction(e: Event) {
+	if (e.target) {
 
 		// @ts-ignore
-		if((<HTMLElement>e.target).parentElement.id === "add-to-cart-btn"){
-			addToCart1(parseInt((<HTMLElement>e.target).closest(".card").id)).then(r =>{
+		if ((<HTMLElement>e.target).parentElement.id === "add-to-cart-btn") {
+			addToCart1(parseInt((<HTMLElement>e.target).closest(".card").id)).then(r => {
 				let num = localStorage.getItem("cartN");
 				localStorage.removeItem("cartN");
-				localStorage.setItem("cartN", ""+(parseInt(num)+1));
+				localStorage.setItem("cartN", "" + (parseInt(num) + 1));
 				location.reload();
 				return;
-			} );
-		}else if( (<HTMLElement>e.target).closest(".card").id ){
+			});
+		} else if ((<HTMLElement>e.target).closest(".card").id) {
 
 			// @ts-ignore
-			window.location.href= '/demo_war_exploded/productpage.html?productID=' +(<HTMLElement>e.target).closest(".card").id;
+			window.location.href = '/demo_war_exploded/productpage.html?productID=' + (<HTMLElement>e.target).closest(".card").id;
 		}
 
 	}
@@ -55,7 +35,7 @@ function thisFunction(e: Event){
 
 async function loadProducts() {
 	const reducer = (accumulator: string, item: Product) => accumulator +
-										`<div class="card" id="${item.id}">
+		`<div class="card" id="${item.id}">
 											<button class="add-to-cart-btn" id="add-to-cart-btn">
                     		<i class="fas fa-plus-circle"></i>
                 			</button>
@@ -65,8 +45,8 @@ async function loadProducts() {
 											</div>
 										</div>`
 
-	const res: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "Servlet" +"?ACTION=top3");
-	const JsonObj: JSONResponse = await res.json();
+	const res: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "Servlet" + "?ACTION=top3");
+	const JsonObj: ArrayProductResponse = await res.json();
 	return JsonObj.data.reduce(reducer, "");
 }
 
@@ -79,16 +59,17 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-async function addToCart1(id : number){
-	const checkRes: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" +"?ACTION=check&ID="+localStorage.getItem("userID"));
-	const checkJsonObj: intJSONREsponse = await checkRes.json();
+async function addToCart1(id: number) {
+	const checkRes: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=check&ID=" + localStorage.getItem("userID"));
+	const checkJsonObj: intArrayResponse = await checkRes.json();
 
-	if(checkJsonObj.data && checkJsonObj.data.includes(id)){
-		const ures: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" +"?ACTION=update&ID="+localStorage.getItem("userID")+"&item="+id);
-		const uJsonObj: ProductResponse = await ures.json();
+	// @ts-ignore
+	if (checkJsonObj.data && checkJsonObj.data.includes(id)) {
+		const ures: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=update&ID=" + localStorage.getItem("userID") + "&item=" + id);
+		const uJsonObj: ArrayProductResponse = await ures.json();
 		return;
 	}
 
-	const res: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" +"?ACTION=add&ID="+localStorage.getItem("userID")+"&item="+id);
-	const JsonObj: ProductResponse = await res.json();
+	const res: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=add&ID=" + localStorage.getItem("userID") + "&item=" + id);
+	const JsonObj: ArrayProductResponse = await res.json();
 }

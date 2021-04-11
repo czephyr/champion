@@ -1,4 +1,3 @@
-"use strict";
 let footerString = `
 	<div class="big-row">
 <div class="slogan">

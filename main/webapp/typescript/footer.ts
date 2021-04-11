@@ -25,5 +25,5 @@ let footerString: string = `
 <h6>&copy;2021 by <span class="bold-text">Alfredo</span>.</h6>`;
 
 window.addEventListener("DOMContentLoaded", () => {
-	document.getElementsByTagName("footer")[0].innerHTML =footerString;
+	document.getElementsByTagName("footer")[0].innerHTML = footerString;
 });

@@ -1,32 +1,15 @@
+import {Product} from "../models/product";
+import {ArrayProductResponse, intArrayResponse} from "../models/responses";
+
+
 let itemsHere: HTMLElement | null = document.getElementById("items-here");
 let loader: HTMLElement | null = document.getElementById("loader");
 let filterButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("filterButton");
 let itemN = document.getElementById("itemN");
 
-interface Product {
-	id: number;
-	price: number;
-	text: string;
-	name: string;
-	category: string;
-	img250: string;
-}
 
-interface JSONResponse {
-	data: Array<Product>;
-	status: number;
-}
 
-interface ProductResponse {
-	data: Array<Product>;
-	status: number;
-}
 
-interface intJSONREsponse {
-	data: Array<number>;
-	status: number;
-	msg: string;
-}
 
 if (itemsHere) {
 	itemsHere.addEventListener("click", setClickBehaviour);
@@ -36,7 +19,7 @@ function setClickBehaviour(e: Event) {
 	if (e.target) {
 		// @ts-ignore
 		if ((<HTMLElement>e.target).parentElement.id === "add-to-cart-btn") {
-			addToCart2(parseInt((<HTMLElement>e.target).closest(".card").id)).then(r => {
+			addToCart2(parseInt((<HTMLElement>e.target).closest(".card").id)).then(() => {
 				let num = localStorage.getItem("cartN");
 				localStorage.removeItem("cartN");
 				localStorage.setItem("cartN", "" + (parseInt(num) + 1));
@@ -76,7 +59,7 @@ async function filterCatalogue() {
 
 
 	const res: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "Servlet" + "?ACTION=filter&NAME=" + name + "&ORDER=" + order);
-	const JsonObj: JSONResponse = await res.json();
+	const JsonObj: ArrayProductResponse = await res.json();
 
 
 	const result: string = JsonObj.data.reduce(reducer, "");
@@ -103,7 +86,7 @@ async function loadFullCatalogue() {
             </div>`
 
 	const res: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "Servlet" + "?ACTION=all");
-	const JsonObj: JSONResponse = await res.json();
+	const JsonObj: ArrayProductResponse = await res.json();
 	if (itemN) {
 		itemN.innerText = JsonObj.data.length + " products";
 	}
@@ -121,14 +104,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
 async function addToCart2(id: number) {
 	const checkRes: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=check&ID=" + localStorage.getItem("userID"));
-	const checkJsonObj: intJSONREsponse = await checkRes.json();
+	const checkJsonObj: intArrayResponse = await checkRes.json();
 
-	if (checkJsonObj.data && checkJsonObj.data.includes(id)) {
+	if (checkJsonObj.data && checkJsonObj.data.indexOf(id)) {
 		const ures: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=update&ID=" + localStorage.getItem("userID") + "&item=" + id);
-		const uJsonObj: ProductResponse = await ures.json();
+		const uJsonObj: ArrayProductResponse = await ures.json();
 		return;
 	}
 
 	const res: Response = await fetch("http://localhost:8080/demo_war_exploded/" + "CartServlet" + "?ACTION=add&ID=" + localStorage.getItem("userID") + "&item=" + id);
-	const JsonObj: ProductResponse = await res.json();
+	const JsonObj: ArrayProductResponse = await res.json();
 }
