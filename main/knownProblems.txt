@@ -1,0 +1,15 @@
+#CORRECTED 1) If you add a product through the admin panel, that product wont have an image.
+
+2) URLs in the typescript are all STATIC must be changed to a variable
+
+3) the admin page lets you in without checking if youre an admin
+
+3) Button colors you fuck
+
+4) Mediaquery to put image and text vertically in the productpage when on medium screens
+
+5) when you add more products on the cart, it writes out of the white pop up (add an overflow bar)
+
+6) add a "no reviews found" thing when no reviews are found
+
+7) When you add a product you can click on its name to go to its page in the admin panel

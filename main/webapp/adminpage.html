@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com"/>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+		rel="stylesheet"
+	/>
+
+	<script
+		src="https://kit.fontawesome.com/bb836bff6f.js"
+		crossorigin="anonymous"
+	></script>
+
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/catalogue.css"/>
+	<link rel="stylesheet" href="css/product.css"/>
+	<link rel="stylesheet" href="css/orderspage.css"/>
+	<link rel="stylesheet" href="css/login.css"/>
+	<link rel="stylesheet" href="css/cart.css"/>
+
+	<title>Document</title>
+</head>
+<body>
+
+<nav></nav>
+
+<div id="cart" class="cart">
+	<div class="close-login-button">
+		<button class="close-login" id="openCartButton">
+			<i class="fas fa-times"></i>
+		</button>
+	</div>
+	<h2>What is in your cart currently</h2>
+	<table class="cart-table">
+		<thead>
+		<tr>
+			<th>Items</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody id="itemsSpace">
+
+		<div class="loader" id="cartLoader">
+			<img src="sources/gif/loader.gif" alt=""/>
+		</div>
+
+		</tbody>
+	</table>
+	<div class="center-div" id="btnSpace"></div>
+</div>
+
+<div id="content"></div>
+
+<main id="main">
+	<section class="admin-page">
+		<div class="page-title">
+			<h2>Items</h2>
+			<span id="itemN">24 items</span>
+		</div>
+		<div class="order">
+			<table class="order-table">
+				<thead>
+					<tr>
+					<th>ID</th>
+					<th>Item</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Modify</th>
+				</tr>
+				</thead>
+				<tbody id="productTable">
+
+					<div class="loader" id="productLoader">
+						<img src="sources/gif/loader.gif" alt=""/>
+					</div>
+
+					<tr id="lastRow">
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<div class="review-button">
+								<button class="add-delete-button">
+									<i class="fas fa-plus" id="productAdd"></i>
+								</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<section class="admin-page">
+		<div class="page-title">
+			<h2>Users</h2>
+			<span id="usersN">15 users</span>
+		</div>
+		<div class="order" id="userTable">
+			<div class="loader" id="userLoader">
+				<img src="sources/gif/loader.gif" alt=""/>
+			</div>
+		</div>
+	</section>
+	<hr/>
+</main>
+
+<footer></footer>
+</body>
+
+<script src="typescript/navbar.js"></script>
+<script src="typescript/footer.js"></script>
+<script src="typescript/cart.js"></script>
+<script src="typescript/newadmin.js"></script>
+</html>

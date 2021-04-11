@@ -1,0 +1,16 @@
+.item-section {
+	margin-top: 5em;
+}
+
+.product-name {
+	margin: 0;
+}
+
+.product-info1 {
+	margin: 0.3em 0;
+}
+
+.product-descr {
+	font-size: 1.4rem;
+	color: rgb(102, 100, 100);
+}

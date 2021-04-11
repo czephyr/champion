@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="shortcut icon" href="#">
+
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com"/>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+		rel="stylesheet"
+	/>
+
+	<script
+		crossorigin="anonymous"
+		src="https://kit.fontawesome.com/bb836bff6f.js"
+	></script>
+
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/catalogue.css"/>
+	<link rel="stylesheet" href="css/product.css"/>
+	<link rel="stylesheet" href="css/orderspage.css"/>
+	<link rel="stylesheet" href="css/login.css"/>
+	<link rel="stylesheet" href="css/cart.css"/>
+
+	<title>Document</title>
+</head>
+<body>
+
+<video src="sources/video/homepage_4.mp4" autoplay></video>
+
+<nav id="navbarSpace"></nav>
+
+<div id="login" class="login"></div>
+
+<div id="cart" class="cart">
+	<div class="close-login-button">
+		<button class="close-login" id="openCartButton">
+			<i class="fas fa-times"></i>
+		</button>
+	</div>
+	<h2>What is in your cart currently</h2>
+	<table class="cart-table">
+		<thead>
+		<tr>
+			<th>Items</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody id="itemsSpace">
+
+		<div class="loader" id="cartLoader">
+			<img src="sources/gif/loader.gif" alt=""/>
+		</div>
+
+		</tbody>
+	</table>
+	<div class="center-div" id="btnSpace"></div></div>
+
+<div id="content"></div>
+
+<header>
+	<h1>Some bullshit text to sell the product</h1>
+	<a class="btn" href="catalogue.html">Catalogue</a>
+</header>
+
+<main id="main">
+	<section>
+		<h2>Most sold!</h2>
+		<div class="row" id="top3">
+			<div class="loader" id="top3loader">
+				<img src="sources/gif/loader.gif" alt=""/>
+			</div>
+		</div>
+		<a class="btn" href="catalogue.html">View all</a>
+	</section>
+
+	<section>
+		<h2>Categories</h2>
+		<div class="card card-section">
+			<img src="https://via.placeholder.com/375x230" alt=""/>
+			<div class="column">
+				<div class="category-title item-description">Category One</div>
+				<div class="item-description">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
+					quisquam soluta facere quasi magnam nulla pariatur a ducimus
+					asperiores velit.
+				</div>
+			</div>
+		</div>
+		<div class="card card-section inverse">
+			<img src="https://via.placeholder.com/375x230" alt=""/>
+			<div class="column">
+				<div class="category-title item-description right">
+					Category One
+				</div>
+				<div class="item-description right">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
+					quas reprehenderit a sequi maxime et ratione deserunt sapiente
+					architecto alias?
+				</div>
+			</div>
+		</div>
+		<div class="card card-section">
+			<img src="https://via.placeholder.com/375x230" alt=""/>
+			<div class="column">
+				<div class="category-title item-description">Category One</div>
+				<div class="item-description">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
+					itaque tenetur laudantium quos cum velit quas minima aperiam est
+					accusantium?
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<hr/>
+</main>
+
+<footer></footer>
+
+</body>
+
+<script src="typescript/navbar.js"></script>
+<script src="typescript/footer.js"></script>
+<script src="typescript/cart.js"></script>
+<script src="typescript/login.js"></script>
+<script src="typescript/top3sold.js"></script>
+</html>

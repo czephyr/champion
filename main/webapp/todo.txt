@@ -1,0 +1,5 @@
+-Fix no reviews loading infinitely
+-Product images to be added in database and scripts
+
+-Fix in login viene rimandato al client l'utente intero compreso di password
+(creare un creator senza la password del bean)

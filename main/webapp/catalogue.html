@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com"/>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+		rel="stylesheet"
+	/>
+
+	<script
+		src="https://kit.fontawesome.com/bb836bff6f.js"
+		crossorigin="anonymous"
+	></script>
+
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/catalogue.css"/>
+	<link rel="stylesheet" href="css/orderspage.css"/>
+	<link rel="stylesheet" href="css/login.css"/>
+	<link rel="stylesheet" href="css/cart.css"/>
+
+	<title>Document</title>
+</head>
+<body>
+
+<nav></nav>
+
+<div id="login" class="login"></div>
+
+<div id="cart" class="cart">
+	<div class="close-login-button">
+		<button class="close-login" id="openCartButton">
+			<i class="fas fa-times"></i>
+		</button>
+	</div>
+	<h2>What is in your cart currently</h2>
+	<table class="cart-table">
+		<thead>
+		<tr>
+			<th>Items</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody id="itemsSpace">
+
+		<div class="loader" id="cartLoader">
+			<img src="sources/gif/loader.gif" alt=""/>
+		</div>
+
+		</tbody>
+	</table>
+	<div class="center-div" id="btnSpace"></div></div>
+
+<div id="content"></div>
+
+
+<main id="main">
+	<section class="catalogue-section">
+		<div class="page-title">
+			<h2>Catalogue</h2>
+			<span id="itemN"></span>
+		</div>
+		<div class="filter-forms" id="searchForms">
+			<div class="dropdowns">
+				<input
+					class="search-bar"
+					type="text"
+					placeholder="Search"
+					id="searchBar"
+				/><a id="filterButton" href="#" class="btn filter">filter</a>
+			</div>
+			<div class="dropdowns">
+				<select class="filter-bar" id="order">
+					<option value="Alphabetically" selected>Alphabetically</option>
+					<option value="PriceHtoL">Price: High to low</option>
+					<option value="PriceLtoH">Price: Low to High</option>
+					<option value="Popularity">Popularity</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row row-catalogue" id="items-here">
+			<div class="loader" id="loader">
+				<img src="sources/gif/loader.gif" alt=""/>
+			</div>
+
+		</div>
+	</section>
+	<hr/>
+</main>
+
+<footer></footer>
+
+</body>
+
+<script src="typescript/navbar.js"></script>
+<script src="typescript/footer.js"></script>
+<script src="typescript/cart.js"></script>
+<script src="typescript/login.js"></script>
+<script src="typescript/catalogueScripts.js"></script>
+<script src="typescript/searchbar.js"></script>
+</html>

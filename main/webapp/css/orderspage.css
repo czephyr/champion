@@ -1,0 +1,59 @@
+.thank-you {
+	text-align: center;
+	margin-top: 2em;
+}
+
+@media (min-width: 50em) {
+	.thank-you {
+		text-align: center;
+		margin-top: 5em;
+	}
+}
+
+.order {
+	width: 100%;
+}
+
+.order-table {
+	width: 100%;
+	font-size: 1.2rem;
+}
+
+th,
+td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+th:first-child,
+td:first-child {
+	padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+	padding-right: 0;
+}
+
+tbody > tr:last-child > td {
+	border-bottom: none;
+}
+
+.review-button {
+	text-align: center;
+}
+
+.admin-page {
+	margin-top: 3em;
+}
+
+i + i {
+	margin-left: 1em;
+}
+
+.add-delete-button {
+	background-color: transparent;
+	border: none;
+	font-size: 1.3rem;
+}
